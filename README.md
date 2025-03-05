@@ -1,54 +1,82 @@
-# React + TypeScript + Vite
+# rccomponent-color-picker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`rccomponent-color-picker` is a simple and customizable color picker library for **React** projects. This component allows users to visually select a color and get its value to use it in different parts of your application.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive color picker**.
+- **Support for copying the selected color to the clipboard**.
+- **Reusable component** to integrate easily into any React project.
+- **Customization** through props to adjust design and behavior.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+You can install `rccomponent-color-picker` via npm:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install rccomponent-color-picker
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+import ColorPicker from 'rccomponent-color-picker';
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## Basic Example
+
+```bash
+import React, { useState } from 'react';
+import ColorPicker from 'rccomponent-color-picker';
+import 'rccomponent-color-picker/dist/index.css'; // Make sure to import the styles
+
+const App = () => {
+  const [color, setColor] = useState('#ff0000');
+
+  const handleChange = (newColor: string) => {
+    setColor(newColor);
+  };
+
+  return (
+    <div>
+      <h1>Select a color:</h1>
+      <ColorPicker color={color} onChange={handleChange} />
+      <div>Selected color: {color}</div>
+    </div>
+  );
+};
+
+export default App;
+```
+
+## Props
+
+| Prop       | Type       | Description                                                                               |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------- |
+| `color`    | `string`   | The initial color of the picker (default is `#ff0000`).                                   |
+| `onChange` | `function` | Function that is called when the color changes. It receives the new color as an argument. |
+| `disabled` | `boolean`  | If `true`, disables the color picker. (Default: `false`)                                  |
+| `showCopy` | `boolean`  | If `true`, shows the button to copy the color to the clipboard. (Default: `true`)         |
+
+## Development
+
+If you want to contribute or make modifications to the project, follow these steps:
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/your_username/rccomponent-color-picker.git
+cd rccomponent-color-picker
+```
+
+### Install dependecies:
+
+```bash
+npm install
+```
+
+### Run the project locally:
+
+```bash
+npm run dev
 ```

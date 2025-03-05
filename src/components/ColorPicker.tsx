@@ -68,7 +68,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         </button>
         <button 
         onClick={copyToClipBoard}
-        className="px-4 py-2 mt-2 rounded-md text-white bg-green-500 hover:bg-green-600"
+        className="px-4 py-2 rounded-md text-white bg-green-500 hover:bg-green-600"
         >
             {copied ? "Copiado!" : "Copiar"}
         </button>
